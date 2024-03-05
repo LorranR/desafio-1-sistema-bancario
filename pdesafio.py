@@ -103,6 +103,16 @@ def listar_contas(contas):
         print(textwrap.dedent(linha))
 
 
+def carteira_investimento(cpf,usuarios,saldo):
+     cpf = input("Informe o CPF do usuário: ")
+     usuario = filtrar_usuario(cpf,usuarios)
+     if saldo > 10000 and usuario:
+         print("Perfil de investimento livre para investir em CDB ")
+         print("\n=== Compre CDB  a patir de R$1.000,00! ===")
+
+         return {"saldo": saldo,"usuarios": usuarios}
+     print("\n@@@ Usuário não encontrado, Infelizmente você não é um cliente! @@@")
+
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
@@ -149,6 +159,9 @@ def main():
 
         elif opcao == "lc":
             listar_contas(contas)
+
+        elif opcao == "cd":
+            carteira_investimento(contas,usuarios)
 
         elif opcao == "q":
             break
